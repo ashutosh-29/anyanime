@@ -24,7 +24,7 @@ function Favorites() {
     localStorage.setItem("AnyAnimeFav",JSON.stringify(newArray));
   }
   let filtered=[];
-  filtered= curGenre=='All'?favorites:
+  filtered= curGenre==='All'?favorites:
   favorites.filter((anime)=>anime.genres.some(ele=> ele.name=== curGenre));
 
   if(rating===1)filtered=filtered.sort((a,b)=>a.score-b.score);
