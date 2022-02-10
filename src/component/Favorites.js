@@ -11,7 +11,7 @@ function Favorites() {
   const [search,setSearch]=useState("");
   const [rows,setRows]=useState(5);
   useEffect(()=>{
-    if(localStorage.getItem("AnyAnimeFav")!==null){
+    if(localStorage.getItem("AnyAnimeFav")!==null && localStorage.getItem("AnyAnimeFav")!==""){
       let oldFav=localStorage.getItem("AnyAnimeFav");
       oldFav=JSON.parse(oldFav);
       setFavorites([...oldFav]);
