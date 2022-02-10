@@ -114,9 +114,9 @@ function Favorites() {
                         
                       </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a onClick={()=>remove(Anime)} href="#" className="text-red-600 hover:text-red-900">
+                      <button onClick={()=>remove(Anime)} className="text-red-600 hover:text-red-900">
                         Remove
-                      </a>
+                      </button>
                     </td>
                   </tr>
                 ))}
