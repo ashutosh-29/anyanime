@@ -12,7 +12,7 @@ function Favorites() {
   },[]);
 
   let remove=(movie)=>{
-    let newArray = favorites.filter((val)=> val.mal_id != movie.mal_id);
+    let newArray = favorites.filter((val)=> val.mal_id !== movie.mal_id);
     setFavorites([...newArray]);
     localStorage.setItem("AnyAnimeFav",JSON.stringify(newArray));
   }
