@@ -7,7 +7,7 @@ function Favorites() {
 
   useEffect(()=>{
     let oldFav=localStorage.getItem("AnyAnimeFav") || [];
-    oldFav=JSON.parse(oldFav);
+    oldFav=JSON.parse(oldFav || []);
     setFavorites([...oldFav]);
   },[]);
 
