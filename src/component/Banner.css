@@ -1,0 +1,18 @@
+.spotlight {
+    height: 100%;
+    width: 100%;
+    background-image: radial-gradient(
+        ellipse,
+        transparent 250px,
+        #090a0f 1050px
+    );
+}
+.spotlight1 {
+    height: 100%;
+    width: 100%;
+    background-image: radial-gradient(
+        ellipse,
+        transparent 350px,
+        #090a0f  900px
+    );
+}
