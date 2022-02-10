@@ -12,7 +12,7 @@ function Movies() {
         setPage(page+1);
     }
     function previous(){
-        if(page==1)return;
+        if(page===1)return;
         setPage(page-1);
     }
     useEffect(function(){
@@ -43,7 +43,7 @@ function Movies() {
         
     }
     let remove=(movie)=>{
-        let newArray = favorites.filter((val)=> val.mal_id != movie.mal_id);
+        let newArray = favorites.filter((val)=> val.mal_id !== movie.mal_id);
         setFavorites([...newArray]);
         localStorage.setItem("AnyAnimeFav",JSON.stringify(newArray));
     }
@@ -51,16 +51,16 @@ function Movies() {
   <div className='mb-8'>
   <div className='mt-8 mb-8 font-bold text-2xl md:text-3xl text-center text-[#79B4B7]'>Top Animes</div>
   {
-      movies.length==0 ? <div className='flex justify-center'><BallTriangle heigth="100" width="100" color='grey' ariaLabel='loading'/></div>:
+      movies.length===0 ? <div className='flex justify-center'><BallTriangle heigth="100" width="100" color='grey' ariaLabel='loading'/></div>:
   
   <div className='flex flex-wrap m-2 md:m-4 justify-center'>
     {
         movies.map((movie)=>(
             <div onMouseEnter={()=>setHover(movie.mal_id)} onMouseLeave={()=>setHover('')} className={ `relative bg-[url(${movie.image_url})] m-4 h-[20vh] w-[200px] md:shadow-2xl md:h-[30vh] md:w-[300px] shadow-xl rounded-sm bg-center bg-cover flex items-end hover:scale-110 ease-out duration-300`}>
                 {
-                    hover==movie.mal_id && <>
+                    hover===movie.mal_id && <>
                     {
-                       favorites.find((m)=>m.mal_id==movie.mal_id) ?
+                       favorites.find((m)=>m.mal_id===movie.mal_id) ?
                        <div className='cursor-pointer absolute top-2 right-2 text-xl ' onClick={()=>remove(movie)}> ❌ </div>:
                        <div className='cursor-pointer absolute top-2 right-2 text-2xl font-bold' onClick={()=>add(movie)}> ⭐ </div>
                     }  

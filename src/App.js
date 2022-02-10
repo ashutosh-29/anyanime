@@ -3,7 +3,6 @@ import Navbar from './component/Navbar';
 import Banner from './component/Banner';
 import Movies from './component/Movies';
 import Favorites from './component/Favorites';
-import Pagination from './component/Pagination';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 function App() {
   return (
