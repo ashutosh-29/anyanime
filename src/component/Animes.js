@@ -3,8 +3,8 @@ import axios from 'axios';
 import { BallTriangle } from  'react-loader-spinner';
 import Pagination from './Pagination';
 
-function Movies() {
-    const [movies,setMovies]=useState([]);
+function Animes() {
+    const [animes,setAnimes]=useState([]);
     const [page,setPage]=useState(1);
     const [hover,setHover]=useState('');
     const [favorites,setFavorites]=useState([]);
@@ -18,7 +18,7 @@ function Movies() {
     useEffect(function(){
         axios.get(`https://api.jikan.moe/v3/top/anime/${page}`).then((res)=>{
         console.table(res.data.top);
-        setMovies(res.data.top);
+        setAnimes(res.data.top);
         let oldFav=localStorage.getItem("AnyAnimeFav") || [];
         oldFav=JSON.parse(oldFav);
         setFavorites([...oldFav]);
@@ -51,11 +51,11 @@ function Movies() {
   <div className='mb-8'>
   <div className='mt-8 mb-8 font-bold text-2xl md:text-3xl text-center text-[#79B4B7]'>Top Animes</div>
   {
-      movies.length===0 ? <div className='flex justify-center'><BallTriangle heigth="100" width="100" color='grey' ariaLabel='loading'/></div>:
+      animes.length===0 ? <div className='flex justify-center'><BallTriangle heigth="100" width="100" color='grey' ariaLabel='loading'/></div>:
   
   <div className='flex flex-wrap m-2 md:m-4 justify-center'>
     {
-        movies.map((movie)=>(
+        animes.map((movie)=>(
             <div onMouseEnter={()=>setHover(movie.mal_id)} onMouseLeave={()=>setHover('')} className={ `relative bg-[url(${movie.image_url})] m-4 h-[20vh] w-[200px] md:shadow-2xl md:h-[30vh] md:w-[300px] shadow-xl rounded-sm bg-center bg-cover flex items-end hover:scale-110 ease-out duration-300`}>
                 {
                     hover===movie.mal_id && <>
@@ -84,4 +84,4 @@ function Movies() {
     </>;
 }
 
-export default Movies;
+export default Animes;

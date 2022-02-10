@@ -1,9 +1,10 @@
 import './App.css';
 import Navbar from './component/Navbar';
 import Banner from './component/Banner';
-import Movies from './component/Movies';
 import Favorites from './component/Favorites';
+import Animes from './component/Animes';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 function App() {
   return (
     <BrowserRouter>
@@ -12,7 +13,7 @@ function App() {
         <Route path='/' element={
           <>
             <Banner/>
-            <Movies/>
+            <Animes/>
           </>
         }/>
           
@@ -20,8 +21,6 @@ function App() {
           <Favorites/>
         }/>
       </Routes>
-      
-      {/*<h1>Trending Movies</h1>*/}
     </BrowserRouter>
   );
 }
