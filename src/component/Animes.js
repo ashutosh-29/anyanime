@@ -19,9 +19,11 @@ function Animes() {
         axios.get(`https://api.jikan.moe/v3/top/anime/${page}`).then((res)=>{
         console.table(res.data.top);
         setAnimes(res.data.top);
-        let oldFav=localStorage.getItem("AnyAnimeFav") || [];
-        oldFav=JSON.parse(oldFav);
-        setFavorites([...oldFav]);
+        if(localStorage.getItem("AnyAnimeFav")!==null && localStorage.getItem("AnyAnimeFav")!==""){
+            let oldFav=localStorage.getItem("AnyAnimeFav");
+            oldFav=JSON.parse(oldFav);
+            setFavorites([...oldFav]);
+        }
         });
     },[page]);
     let add=(anime)=>{
