@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import Pagination from './Pagination';
 
+
 function Favorites() {
   let genres=['All','Action','Adventure','Avant Garde','Comedy','Drama','Fantasy','Horror','Mystery','Romance','Sci-Fi', 'Slice of Life','Sports','Supernatural','Suspense' ]
   const [favorites,setFavorites]=useState([]);

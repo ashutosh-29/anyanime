@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BallTriangle } from  'react-loader-spinner';
 import Pagination from './Pagination';
+import { Link } from 'react-router-dom';
 
 function Animes() {
     const [animes,setAnimes]=useState([]);
@@ -57,23 +58,23 @@ function Animes() {
   
   <div className='flex flex-wrap m-2 md:m-4 justify-center'>
     {
-        animes.map((movie)=>(
-            <div onMouseEnter={()=>setHover(movie.mal_id)} onMouseLeave={()=>setHover('')} className={ `relative bg-[url(${movie.image_url})] m-4 h-[20vh] w-[200px] md:shadow-2xl md:h-[30vh] md:w-[300px] shadow-xl rounded-sm bg-center bg-cover flex items-end hover:scale-110 ease-out duration-300`}>
+        animes.map((movie)=>{
+            return <div onMouseEnter={()=>setHover(movie.mal_id)} onMouseLeave={()=>setHover('')} className={ `relative bg-[url(${movie.image_url})] m-4 h-[20vh] w-[200px] md:shadow-2xl md:h-[30vh] md:w-[300px] shadow-xl rounded-sm bg-center bg-cover flex items-end hover:scale-110 ease-out duration-300`}>
                 {
                     hover===movie.mal_id && <>
                     {
                        favorites.find((m)=>m.mal_id===movie.mal_id) ?
                        <div className='cursor-pointer absolute top-2 right-2 text-xl ' onClick={()=>remove(movie)}> ❌ </div>:
-                       <div className='cursor-pointer absolute top-2 right-2 text-2xl font-bold' onClick={()=>add(movie)}> ⭐ </div>
+                       <div className='cursor-pointer absolute top-2 right-2 text-2xl font-bold' onClick={()=>add(movie)}>💚</div>
                     }  
                     </>
                 }
                 
-                <div className='text-xl md:text-xl text-white bg-gradient-to-r from-[#090a0f] to-[#1b2735] p-1 pl-2 w-full flex '>
+                <Link to={{pathname: "/description", search: String(movie.mal_id)}} className='text-xl md:text-xl text-white bg-gradient-to-r from-[#090a0f] to-[#1b2735] p-1 pl-2 w-full flex '>
                     {movie.title}
-                </div>
+                </Link>
             </div>
-        ))
+        })
     }
     
     
