@@ -1,3 +1,4 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
 import React, { useState,useEffect } from 'react';
 import { useLocation } from "react-router";
 import { BallTriangle } from  'react-loader-spinner'; 
@@ -10,11 +11,11 @@ function Description() {
   const [myTitle,setMyTitle]=useState("");
   const [myGenres,setMyGenres]=useState([]);
   const location = useLocation();
-  
-    useEffect(()=>{
-      let animeIDStr=location.search;
-      animeIDStr=animeIDStr.substring(1,animeIDStr.length);
-      const animeID=parseInt(animeIDStr);
+  const [loc,setLoc]=useState(location.search);
+    useEffect(function(){
+      const animeIDStr=loc;
+      const animeIDx=animeIDStr.substring(1,animeIDStr.length);
+      const animeID=parseInt(animeIDx);
       const getAllInfo = async()=>{
         const res = await axios.get(`https://api.jikan.moe/v4/anime/${animeID}`);
         const mydata = res.data.data;
@@ -24,15 +25,18 @@ function Description() {
         setMySynopsis(mydata.synopsis);
         setMyTitle(mydata.title);
         setIsLoading(false);
+        setLoc(loc);
        }
        
        getAllInfo();
-    
-    },[]);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[loc]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
   return (
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     <>
-    {isLoading ? (
+    {// eslint-disable-next-line react-hooks/exhaustive-deps
+    isLoading ? (
         <div className='flex justify-center'><BallTriangle heigth="100" width="100" color='grey' ariaLabel='loading'/></div>
       ) : (
         <div className='w-3/4 text-white m-auto flex'>
